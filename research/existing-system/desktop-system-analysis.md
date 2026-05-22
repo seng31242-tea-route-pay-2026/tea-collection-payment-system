@@ -92,9 +92,9 @@ Although the desktop system supports accounting functions, several activities ar
 
 1. Tea collection is recorded manually in route books.
 2. Office staff manually enter daily collection records.
-3. Farmer identification is performed manually.
-4. Bank submission processes are manually handled.
-5. Farmers do not receive automatic payment notifications.
+3. Loan, fertilizer, and tea deductions are handled manually.
+4. Farmer identification is performed manually.
+5. Bank submission processes are manually handled.
 6. Collection records must sometimes be verified using handwritten farmer books.
 
 ---
@@ -106,50 +106,39 @@ The current desktop system has several limitations:
 ### 1. No Mobile Collection Support
 The system does not support mobile-based tea collection activities.
 
-### 2. No Offline Digital Field Data Capture
+### 2. No Digital Field Data Capture
 Collectors cannot digitally record data during route collection.
 
 ### 3. No QR-Based Farmer Identification
 Farmer identification is fully manual.
 
-### 4. Duplicate Data Entry
+### 4. Manual Data Entry
 Collection data is written manually and later re-entered into the desktop system.
 
 ### 5. Outdated User Interface
 The interface is difficult for new users to understand and operate.
 
 ### 6. Limited Automation
-Several payment and reporting tasks still require manual work.
+Payment and reporting tasks still require manual work.
 
 ### 7. No Real-Time Synchronization
 The system does not support local/cloud synchronization or real-time updates.
 
-### 8. No SMS Confirmation Support
-Farmers do not receive payment confirmation messages.
 
 ---
 
-## Usability Issues
+## Usability Issues and Performance Issues
 
-The following usability problems were identified:
+The following usability problems and performance problems were identified:
 
-- Difficult navigation for new users
+- Difficult navigation for users
 - Heavy dependency on office staff experience
 - Time-consuming manual operations
 - Increased workload during month-end payment periods
-- Poor support for field operations
-
----
-
-## Performance and Operational Issues
-
-The current system faces operational inefficiencies such as:
-
+- No support for field operations
 - Delays caused by manual end-of-day data entry
 - Increased human error risk
-- Slow processing during busy collection periods
-- Dependency on handwritten records
-- Difficulty maintaining accurate records during power or connectivity interruptions
+- Slow processing during collection periods
 
 ---
 
@@ -158,12 +147,10 @@ The current system faces operational inefficiencies such as:
 Some useful features of the current desktop system should be preserved in TeaRoutePay:
 
 1. Monthly payment calculation functionality
-2. Loan deduction management
-3. Fertilizer deduction handling
-4. Tea deduction management
-5. Receipt generation
-6. Accounting record maintenance
-7. Manual backup support during failures
+2. Loan deduction, fertilizer deduction, Tea deduction management
+3. Receipt generation
+4. Accounting record maintenance
+5. Manual backup support during failures
 
 ---
 
@@ -180,19 +167,7 @@ The following areas require significant improvement:
 7. Improve reporting and tracking functionality
 8. Support local and cloud synchronization
 9. Improve system maintainability and scalability
-
----
-
-## Proposed Direction for TeaRoutePay
-
-The TeaRoutePay solution aims to modernize the current workflow using:
-
-- Offline-first mobile applications
-- QR-based farmer identification
-- Synchronization between mobile and desktop systems
-- Improved payment processing
-- SMS notifications
-- Better usability and reporting support
+10. Implement payment process
 
 The system will preserve useful accounting features while reducing manual work and improving operational efficiency.
 
