@@ -232,4 +232,109 @@ The system shall reduce duplicate collection records.
 ## FR-QR-11 – Manual Farmer Identification
 The system shall support manual farmer identification if QR scanning fails.
 
+---
+
+# Damaged or Invalid QR Code Handling
+
+Several issues may occur during QR usage in field conditions.
+
+| Scenario | Description |
+|---|---|
+| Damaged QR Code | QR cannot be scanned due to physical damage |
+| Faded QR Sticker | QR print becomes unclear |
+| Invalid QR | QR is not registered in the system |
+| Camera Failure | Mobile camera cannot scan |
+| Missing Local Data | Farmer details unavailable locally |
+
+---
+
+# QR Replacement Process
+
+If a QR code becomes damaged:
+
+1. The company can issue the previously printed QR code again
+2. The company can assign a new QR code if necessary
+3. The old QR reference becomes inactive
+4. Farmer records are updated in the system
+
+This ensures continuous farmer identification support without data loss.
+
+---
+
+# Fallback Process if QR Scan Fails
+
+If QR scanning fails, the collector can manually identify the farmer.
+
+## Manual Identification Method
+
+Collectors can:
+- Enter the unique farmer number manually
+- Search farmer details using the application
+
+The system retrieves farmer details using:
+- Farmer unique number
+- Local records stored in the application
+
+This fallback process ensures collection activities can continue even when QR scanning is unsuccessful.
+
+---
+
+# Offline QR Handling Requirements
+
+Tea collection routes may operate in low-connectivity areas.
+
+Therefore, the system should support:
+
+- Offline QR verification
+- Local farmer lookup
+- Local hash storage
+- Offline collection record storage
+- Delayed synchronization
+
+---
+
+# Security Considerations
+
+The QR implementation should support basic security features.
+
+## Security Requirements
+
+- Prevent duplicate QR assignment
+- Protect farmer identification data
+- Validate QR ownership
+- Support QR deactivation
+- Secure local hash storage
+
+---
+
+# Expected Improvements with QR Integration
+
+The QR-based system aims to improve:
+
+- Farmer identification accuracy
+- Collection speed
+- Offline collection capability
+- Data reliability
+- Reduction of human errors
+- Faster synchronization
+- Overall operational efficiency
+
+---
+
+# Conclusion
+
+The QR code system is an important component of the TeaRoutePay solution. QR-based farmer identification improves collection accuracy, reduces manual searching, and supports faster tea collection activities.
+
+The proposed solution supports:
+
+- QR sticker-based farmer identification
+- Pre-printed QR management
+- Local hash storage
+- Offline QR verification
+- Damaged QR replacement
+- Manual fallback identification
+
+This ensures reliable operation in rural tea collection environments with limited connectivity.
+```
+
 
