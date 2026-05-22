@@ -102,5 +102,134 @@ This allows:
 
 The mobile device can identify farmers without requiring continuous internet connectivity.
 
+---
+
+# QR Code Generation Process
+
+## Step 1 – Farmer Registration
+
+When a new farmer registers:
+
+- Office staff creates a farmer record
+- The system generates a unique farmer number
+
+---
+
+## Step 2 – Pre-Printed QR Availability
+
+The company already maintains multiple pre-printed QR codes.
+
+These QR codes are prepared in advance and stored for future farmer registrations.
+
+---
+
+## Step 3 – QR Code Assignment
+
+When assigning a QR code:
+
+- A unique farmer number is added before the QR hash
+- The QR code becomes linked to that farmer
+- Farmer details are added to the system database
+
+Example:
+
+```text
+FRM-000245 + QR-HASH
+```
+
+This ensures every farmer receives a unique QR-based identification reference.
+
+---
+
+## Step 4 – QR Sticker Placement
+
+The QR code sticker is attached inside:
+- The farmer record book
+
+This allows collectors to scan the QR code easily during collection activities.
+
+---
+
+# QR Generation Functional Requirements
+
+## FR-QR-01 – Unique QR Assignment
+The system shall assign a unique QR reference to each farmer.
+
+## FR-QR-02 – Unique Farmer Number Support
+The system shall generate a unique farmer identification number.
+
+## FR-QR-03 – QR Hash Management
+The system shall manage QR-related hash references securely.
+
+## FR-QR-04 – QR Registration Validation
+The system shall prevent duplicate QR assignment.
+
+## FR-QR-05 – QR Replacement Support
+The system shall support replacing damaged QR codes.
+
+---
+
+# QR Scanning Process
+
+## Step 1 – Collector Opens Mobile Application
+
+The tea collector opens the TeaRoutePay mobile application.
+
+---
+
+## Step 2 – QR Code Scanning
+
+The collector scans the QR code attached to the farmer record book.
+
+The TeaRoutePay application uses:
+- Mobile device camera
+- Integrated QR reader
+
+---
+
+## Step 3 – Farmer Identification
+
+After scanning:
+
+- The system retrieves farmer details
+- The collector verifies the farmer identity
+
+The lookup process uses:
+- Locally stored hash records
+- Farmer unique number
+
+---
+
+## Step 4 – Tea Collection Recording
+
+The collector:
+- Records tea weight
+- Saves collection information
+
+The data is:
+- Stored locally if offline
+- Synchronized later when internet becomes available
+
+---
+
+# QR Scanning Functional Requirements
+
+## FR-QR-06 – Mobile QR Reader Support
+The system shall support QR scanning using the TeaRoutePay mobile application.
+
+## FR-QR-07 – Offline Farmer Identification
+The system shall support farmer lookup without internet connectivity.
+
+## FR-QR-08 – Fast Farmer Retrieval
+The system shall retrieve farmer details immediately after scanning.
+
+## FR-QR-09 – QR Validation
+The system shall validate QR authenticity before displaying farmer data.
+
+## FR-QR-10 – Duplicate Entry Prevention
+The system shall reduce duplicate collection records.
+
+## FR-QR-11 – Manual Farmer Identification
+The system shall support manual farmer identification if QR scanning fails.
 
 
