@@ -98,11 +98,10 @@ The current manual process has several limitations and operational challenges:
 2. Handwritten records may become unclear, damaged, or lost.
 3. Human errors can occur during manual calculations and data entry.
 4. The current desktop system does not support mobile field collection.
-5. The existing user interface is outdated and difficult for new users.
+5. The existing user interface is outdated and difficult for users.
 6. There is no QR-based farmer identification system.
-7. The process does not support offline digital field data capture.
-8. Farmers do not receive instant payment confirmations through SMS.
-9. Manual processes make reporting and tracking slower.
+7. The process does not support digital field data capture.
+8. Manual processes make reporting and tracking slower.
 
 ---
 
