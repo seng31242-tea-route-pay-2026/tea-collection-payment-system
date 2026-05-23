@@ -4,7 +4,7 @@
 
 The TeaRoutePay mobile application will be used by tea collectors during daily tea collection routes. The application is designed to replace manual route books and support digital tea collection recording using an offline-first approach.
 
-The mobile application should support QR-based farmer identification, tea leaf weight recording, deduction-related information access, offline data storage, and synchronization with the central office system.
+The mobile application should support QR-based farmer identification, tea leaf weight recording, deduction-related information access, advance payment, offline data storage, and synchronization with the central office system.
 
 This document identifies the functional requirements of the collector-side mobile application.
 
@@ -19,6 +19,7 @@ The TeaRoutePay mobile application aims to:
 - Reduce duplicate office data entry
 - Support offline field operations
 - Improve synchronization between field and office systems
+- Minimize manual office record entry at the end of the day
 - Improve farmer identification and verification
 
 ---
@@ -38,7 +39,7 @@ The following major functions are required in the TeaRoutePay mobile application
 | Route Management | View assigned collection routes |
 | Synchronization | Sync records with the office system |
 | Validation and Error Handling | Prevent invalid or duplicate records |
-| SMS Integration Support | Support payment notification processes |
+| Advance Payment Support | View tea supply history for the previous and current month and provide advance payments to farmers based on the amount of tea supplied  |
 
 ---
 
@@ -81,22 +82,20 @@ The system retrieves farmer information using QR code data.
 
 ---
 
-## FR-03 – Farmer Lookup
+## FR-03 – Farmer Lookup(If the code is damaged) 
 
 ### Input
 - Farmer ID
 - Farmer name
-- QR code
-
+  
 ### Process
-The system searches and retrieves farmer records.
+The system searches and add records.
 
 ### Output
 - Farmer identification details
 - Collection history information
 
 ### Validation Rules
-- Search input cannot be empty
 - Invalid farmer IDs should generate warnings
 
 ---
@@ -115,7 +114,6 @@ The system records tea collection weight for the selected farmer.
 ### Validation Rules
 - Weight must be numeric
 - Negative values are not allowed
-- Required fields must not be empty
 
 ---
 
@@ -124,8 +122,6 @@ The system records tea collection weight for the selected farmer.
 ### Input
 - Farmer information
 - Tea weight
-- Route details
-- Collection date
 
 ### Process
 The system creates and stores collection records.
@@ -272,45 +268,6 @@ The mobile application should support synchronization between field devices and 
 - Failed sync notifications if errors occur
 
 ---
-
-# Mobile Application Inputs
-
-| Input Type | Description |
-|---|---|
-| QR Code Data | Farmer identification |
-| Tea Weight Values | Tea collection measurements |
-| Route Information | Assigned route details |
-| Farmer Search Data | Farmer lookup information |
-| Login Credentials | Collector authentication |
-
----
-
-# Mobile Application Outputs
-
-| Output Type | Description |
-|---|---|
-| Collection Records | Saved tea collection information |
-| Farmer Details | Farmer lookup results |
-| Validation Messages | Error and warning notifications |
-| Synchronization Status | Sync confirmation or failure |
-| Route Information | Assigned collection routes |
-
----
-
-# Expected Improvements with TeaRoutePay
-
-The mobile application aims to improve field operations through:
-
-- Faster collection recording
-- Improved collection accuracy
-- Reduced paperwork
-- Reduced duplicate office data entry
-- Better synchronization support
-- Offline-first field operation support
-- Improved farmer identification reliability
-
----
-
 # Conclusion
 
 The TeaRoutePay mobile application is a critical component of the proposed tea collection management system. The application must support offline-first collection operations, QR-based farmer identification, synchronization, and accurate collection record management to improve operational efficiency and reduce manual processing challenges.
