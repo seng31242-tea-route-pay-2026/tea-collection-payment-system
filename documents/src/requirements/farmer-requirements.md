@@ -45,28 +45,22 @@ Farmers are key stakeholders of the TeaRoutePay system. They provide tea leaves 
 # Functional Requirements
 
 ## FR-01 – Farmer Identification
-The system shall support QR code or farmer ID-based identification.
+Farmers should be identifiable quickly during tea collection.
 
-## FR-02 – Collection Recording
-The system shall record tea collection details and tea leaf weight accurately.
+## FR-02 – Accurate Tea Weight Recording
+Farmers should have their tea leaf weights recorded accurately during collection.
 
-## FR-03 – Deduction Management
-The system shall manage loan, fertilizer, and tea deductions.
+## FR-03 – Deduction Transparency
+Farmers should be able to clearly view loan, fertilizer, and tea deductions.
 
-## FR-04 – Payment Calculation
-The system shall calculate farmer payments accurately.
+## FR-04 – Accurate Payment Calculation
+Farmers should receive correct payment calculations based on collected tea weight and deductions.
 
-## FR-05 – Receipt Generation
-The system shall generate payment receipts.
+## FR-05 – Collection Proof
+Farmers should receive a receipt or proof after each collection or payment transaction.
 
-## FR-06 – SMS Notifications
-The system shall send payment confirmation SMS notifications.
-
-## FR-07 – Offline Support
-The system shall support offline collection recording.
-
-## FR-08 – Data Validation
-The system shall reduce duplicate entries and human errors.
+## FR-06 – Record Accuracy
+Farmers should have reliable records without duplicate or missing collection entries.
 
 ---
 
