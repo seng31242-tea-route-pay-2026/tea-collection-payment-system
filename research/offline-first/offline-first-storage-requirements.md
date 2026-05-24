@@ -96,14 +96,16 @@ It ensures:
 
 ---
 
-# 7. System Flow Diagram
+## 7. System Flow Diagram
 
-A[Farmer QR Scan<br>Mobile App] --> B[Local SQLite DB]
+```mermaid
+flowchart TD
+
+A[Farmer QR Scan Mobile App] --> B[Local SQLite DB]
 
 B --> C[Tea Collection Entry]
 B --> D[Advance Payment Entry]
 B --> E[New Farmer Creation]
-
 B --> F[Sync Queue]
 
 F --> G{Connection Available?}
@@ -111,8 +113,8 @@ F --> G{Connection Available?}
 G -->|Office Network| H[Office PostgreSQL DB]
 G -->|Internet| I[Cloud PostgreSQL DB]
 
-H --> I
-I --> H
+H <--> I
+```
 
 ---
 
