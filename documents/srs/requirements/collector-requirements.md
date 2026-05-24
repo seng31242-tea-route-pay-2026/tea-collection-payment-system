@@ -63,10 +63,9 @@ The system shall allow tea collectors to securely log into the mobile applicatio
 The system shall support QR code scanning for accurate farmer identification.
 
 ## FR-03 – Farmer Lookup
-The system shall allow collectors to search farmers using:
+The system shall allow collectors to manually search for a farmer when QR code scanning is not possible, using:
 - Farmer ID
 - Farmer name
-- QR code
 
 ## FR-04 – Tea Weight Recording
 The system shall allow collectors to record tea leaf weight during collection.
