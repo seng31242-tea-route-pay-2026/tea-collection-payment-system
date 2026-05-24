@@ -2,416 +2,118 @@
 
 ## Overview
 
-The TeaRoutePay desktop application will be used by office staff and business owners to manage tea collection accounting operations, payment processing, deductions, reporting, and business monitoring activities.
+The TeaRoutePay desktop application is designed for office staff and business owners to securely manage tea collection accounting, token generation, payment handling, deductions, and reporting workflows. 
 
-The desktop system is designed to replace manual and semi-digital office workflows while improving accounting accuracy, reporting efficiency, and operational management.
-
-This document identifies the functional requirements of the office-side desktop application.
+This document outlines the functional requirements for the office-side system, ensuring accurate monthly calculations, secure payment execution, and reliable manual backup operations, meeting the criteria for issue [SENG31242-#12].
 
 ---
 
-# Purpose of the Desktop Application
+## 1. Major Desktop Application Features
 
-The TeaRoutePay desktop application aims to:
-
-- Manage tea collection records
-- Calculate monthly farmer payments
-- Manage deductions
-- Generate receipts and reports
-- Reduce manual accounting work
-- Improve payment accuracy
-- Support business monitoring
-- Support manual backup data entry when necessary
-
----
-
-# Major Desktop Application Features
-
-The following major features are required in the desktop application.
+The system supports the following core capabilities:
 
 | Feature | Description |
-|---|---|
-| User Authentication | Secure access for office staff and owners |
-| Collection Record Management | View and manage tea collection records |
-| Salary Calculation | Calculate monthly farmer payments |
-| Loan Deduction Management | Manage loan deductions |
-| Fertilizer Deduction Management | Manage fertilizer deductions |
-| Tea Deduction Management | Manage tea issue deductions |
-| Receipt Generation | Generate payment receipts |
-| Report Generation | Generate operational and accounting reports |
-| Farmer Record Management | Manage farmer profiles and information |
-| Payment Record Management | Maintain payment history |
-| Data Synchronization | Sync mobile collection records |
-| Manual Backup Entry | Enter records manually if required |
-| Data Validation | Validate accounting and collection records |
+| :--- | :--- |
+| **User Authentication & Token Generation** | Secure access management using generated authentication tokens for sessions and synchronization. |
+| **Collection Record Management** | Interface to view, verify, and input daily tea collection logs. |
+| **Salary Calculation** | Automated calculation of monthly farmer gross and net payouts. |
+| **Payment Handling & Execution** | Comprehensive system for processing, recording, and tracking actual financial disbursements to farmers. |
+| **Deduction Management** | System for tracking and applying loan, fertilizer, and personal tea issue deductions. |
+| **Receipt Generation** | Automated creation of digital and printable receipts with unique transaction tokens. |
+| **Report Generation** | Compilation of financial, operational, and historical reports. |
+| **Data Synchronization** | Token-secured synchronization with mobile collection devices. |
+| **Manual Backup Entry** | Provision for manual record entry during synchronization or device failures. |
 
 ---
 
-# Functional Requirements
+## 2. Functional Requirements
 
-## FR-01 – User Authentication
+### FR-01 – User Authentication & Token Generation
+* **Input:** Username, Password.
+* **Process:** Validates credentials and generates a secure session token. Generates API tokens for mobile synchronization.
+* **Output:** Granted system access, session token, sync token.
+* **Validation:** Credentials must match database records; tokens must expire after inactivity.
 
-### Input
-- Username
-- Password
+### FR-02 – Collection Record Management
+* **Input:** Synchronized mobile data, manual entries.
+* **Process:** Processes and securely stores daily collection weights.
+* **Output:** Updated central database.
+* **Validation:** Prevents duplicate collection entries for the same farmer/date.
 
-### Process
-The system validates login credentials for office users.
+### FR-03 – Monthly Salary Calculation
+* **Input:** Total approved collection weight, current tea rates, aggregated deductions.
+* **Process:** Computes gross total, subtracts deductions, and calculates the net payable amount. 
+* **Output:** Finalized salary records flagged as 'Pending Payment'.
+* **Validation:** Tea rates must be valid numeric values; final payout cannot be negative.
 
-### Output
-- Access to the desktop system
-- Invalid login warning messages
+### FR-04 – Payment Handling and Execution
+* **Input:** Calculated net salary, selected payment method (Cash, Bank Transfer, Cheque), bank details (if applicable).
+* **Process:** Executes the disbursement record. Updates the payment status from 'Pending' to 'Paid'. Generates a unique payment token for the transaction.
+* **Output:** Completed payment ledger entry, payment confirmation, and receipt generation trigger.
+* **Validation:** Cannot process a payment for a zero or negative balance; requires a valid, supported payment method.
 
-### Validation Rules
-- Username cannot be empty
-- Password cannot be empty
+### FR-05 – Loan Deduction Management
+* **Input:** Active loan profiles, scheduled installment amounts.
+* **Process:** Deducts scheduled repayments from the monthly salary and updates outstanding capital.
+* **Output:** Updated loan balances.
+* **Validation:** Deductions cannot exceed the outstanding loan balance.
 
----
+### FR-06 – Fertilizer & Tea Deduction Management
+* **Input:** Fertilizer distribution logs, personal tea issue logs.
+* **Process:** Converts physical issuances into monetary deductions against the farmer's monthly payout.
+* **Output:** Updated deduction ledgers.
+* **Validation:** Values must be strictly positive integers or decimals.
 
-## FR-02 – Collection Record Management
+### FR-07 – Receipt Generation
+* **Input:** Finalized payment records, payment tokens.
+* **Process:** Formats payment, deduction, and collection data into an official receipt layout.
+* **Output:** Printable and downloadable (PDF) receipts bearing a unique verification token.
+* **Validation:** Requires a completed and verified 'Paid' payment record.
 
-### Input
-- Collection records from mobile synchronization
-- Manual collection records
+### FR-08 – Report Generation
+* **Input:** Historical system data (collections, payments, deductions).
+* **Process:** Synthesizes raw data into structured daily, monthly, and route-specific reports.
+* **Output:** Formatted business reports.
+* **Validation:** Reports reflect only committed, verified data.
 
-### Process
-The system stores and manages tea collection records.
+### FR-09 – Data Synchronization
+* **Input:** Mobile collection payloads, authorization tokens.
+* **Process:** Authenticates the mobile device via token and merges incoming data with the desktop database.
+* **Output:** Synchronized database, status notifications.
+* **Validation:** Rejects payloads with invalid or expired tokens.
 
-### Output
-- Updated collection database
-- Collection summaries
-
-### Validation Rules
-- Duplicate records should be prevented
-- Missing required fields should generate warnings
-
----
-
-## FR-03 – Monthly Salary Calculation
-
-### Input
-- Tea collection totals
-- Monthly tea rates
-- Deductions
-
-### Process
-The system calculates monthly farmer payments automatically.
-
-### Output
-- Monthly salary records
-- Payment summaries
-
-### Validation Rules
-- Tea rates must be valid
-- Calculation errors should be detected
-
----
-
-## FR-04 – Loan Deduction Management
-
-### Input
-- Loan information
-- Deduction amounts
-
-### Process
-The system applies and tracks loan deductions.
-
-### Output
-- Updated loan balances
-- Deduction summaries
-
-### Validation Rules
-- Deduction amounts must be numeric
-- Invalid loan records should generate warnings
+### FR-10 – Manual Backup Entry
+* **Input:** Keyboard entry of collection or payment data.
+* **Process:** Bypasses mobile sync to allow direct administrative input during hardware/network failures.
+* **Output:** System records flagged as manually entered.
+* **Validation:** Enforces strict required-field and data-type validation.
 
 ---
 
-## FR-05 – Fertilizer Deduction Management
+## 3. Specific Requirement Categories
+
+### 3.1 Token Generation & Security
+* **Authentication Tokens:** Secure JWT (JSON Web Tokens) or equivalent for managing user sessions and API access.
+* **Transaction Tokens:** Unique, non-sequential alphanumeric IDs generated for every completed payment and receipt to ensure traceability and prevent fraud.
+
+### 3.2 Payment Processing & Handling Requirements
+* **Automated Payroll Batching:** One-click batch calculation for all registered farmers at the end of the billing cycle.
+* **Payment Methods:** Full support for recording Cash transactions, direct Bank Transfers, and Cheque issuances.
+* **Status Tracking:** System must track the lifecycle of a payment (e.g., *Pending, Processing, Paid, Failed*).
+* **Audit Trail:** Every payment must securely log the office staff member who authorized the disbursement, a precise timestamp, and the transaction token.
+* **Payment History:** Immutable logs of all past payments, retrievable and filterable by farmer ID, date range, or payment status.
+
+### 3.3 Deduction Management Requirements
+* Tracks real-time balances for Loans, Fertilizer, and Tea advances.
+* Automatically halts deductions once a specific loan or advance is fully recovered.
+
+### 3.4 Office-Side User Actions
+* Approve synchronized data.
+* Execute monthly payroll calculations and authorize physical/digital payment disbursements.
+* Configure system parameters (e.g., current tea purchasing rates, active banks).
+* Issue receipts and export business intelligence reports.
+* Manually input backup data.
 
-### Input
-- Fertilizer distribution records
-- Deduction values
-
-### Process
-The system calculates fertilizer-related deductions.
-
-### Output
-- Updated fertilizer deduction records
-
-### Validation Rules
-- Invalid deduction values are not allowed
-
----
-
-## FR-06 – Tea Deduction Management
-
-### Input
-- Tea issue records
-- Deduction amounts
-
-### Process
-The system applies tea-for-personal-use deductions.
-
-### Output
-- Updated deduction summaries
-
-### Validation Rules
-- Invalid deduction amounts should not be accepted
-
----
-
-## FR-07 – Receipt Generation
-
-### Input
-- Payment information
-- Farmer details
-
-### Process
-The system generates payment receipts.
-
-### Output
-- Printable receipts
-- Digital receipts
-
-### Validation Rules
-- Required payment details must exist before receipt generation
-
----
-
-## FR-08 – Report Generation
-
-### Input
-- Collection data
-- Payment records
-- Deduction records
-
-### Process
-The system generates operational and accounting reports.
-
-### Output
-- Daily reports
-- Monthly reports
-- Deduction reports
-- Payment reports
-
-### Validation Rules
-- Reports should use validated system data only
-
----
-
-## FR-09 – Farmer Record Management
-
-### Input
-- Farmer details
-- Contact information
-
-### Process
-The system stores and updates farmer records.
-
-### Output
-- Updated farmer database
-
-### Validation Rules
-- Duplicate farmer IDs should not be allowed
-
----
-
-## FR-10 – Payment Record Management
-
-### Input
-- Monthly salary data
-- Payment transactions
-
-### Process
-The system stores and tracks payment history.
-
-### Output
-- Farmer payment history
-- Payment summaries
-
-### Validation Rules
-- Invalid payment records should not be saved
-
----
-
-## FR-11 – Data Synchronization
-
-### Input
-- Mobile application collection records
-
-### Process
-The system synchronizes records received from collector devices.
-
-### Output
-- Updated office database
-- Synchronization status notifications
-
-### Validation Rules
-- Duplicate synchronization must be prevented
-
----
-
-## FR-12 – Manual Backup Entry
-
-### Input
-- Manually entered collection or payment records
-
-### Process
-The system allows office staff to enter records manually when synchronization or mobile devices fail.
-
-### Output
-- Updated system records
-
-### Validation Rules
-- Manual entries must be validated before saving
-
----
-
-## FR-13 – Data Validation and Error Handling
-
-### Input
-- User-entered accounting and collection data
-
-### Process
-The system validates records before saving.
-
-### Output
-- Validation messages
-- Error notifications
-
-### Validation Rules
-- Required fields cannot be empty
-- Invalid numeric values are not allowed
-
----
-
-# Monthly Salary Calculation Requirements
-
-The desktop application must support automated monthly salary calculations.
-
-## Salary Calculation Inputs
-
-The system should calculate payments using:
-- Total tea collection weight
-- Monthly tea rates
-- Loan deductions
-- Fertilizer deductions
-- Tea deductions
-
-## Expected Features
-
-- Automatic calculations
-- Monthly payment summaries
-- Deduction summaries
-- Payment verification support
-- Reduced manual calculation errors
-
----
-
-# Deduction Management Requirements
-
-The system should support several deduction types.
-
-## Loan Deductions
-The system shall:
-- Record loans
-- Track loan balances
-- Automatically apply deductions
-
-## Fertilizer Deductions
-The system shall:
-- Record fertilizer distributions
-- Apply fertilizer-related deductions
-
-## Tea Deductions
-The system shall:
-- Record tea-for-personal-use transactions
-- Apply tea deductions automatically
-
----
-
-# Receipt Generation Requirements
-
-The system should generate receipts containing:
-
-- Farmer details
-- Collection totals
-- Deduction summaries
-- Final payment amount
-- Payment date
-
-## Receipt Features
-
-- Printable receipts
-- Digital receipt support
-- Clear payment summaries
-- Payment verification support
-
----
-
-# Report Generation Requirements
-
-The desktop application should support operational and accounting reports.
-
-## Required Reports
-
-| Report Type | Purpose |
-|---|---|
-| Daily Collection Report | Monitor daily collection |
-| Monthly Payment Report | Review farmer payments |
-| Loan Deduction Report | Monitor loan balances |
-| Fertilizer Distribution Report | Track fertilizer activities |
-| Tea Deduction Report | Review tea deductions |
-| Route Collection Report | Monitor collection routes |
-| Farmer Collection History Report | View farmer collection trends |
-
----
-
-# Manual Backup Data Entry Requirements
-
-The system should support manual data entry when:
-- Mobile synchronization fails
-- Devices are unavailable
-- Data recovery is required
-
-## Expected Features
-
-- Manual collection record entry
-- Manual payment entry
-- Validation support
-- Duplicate prevention support
-
----
-
-# Office-Side User Actions
-
-The desktop application should support the following office activities:
-
-- View synchronized collection records
-- Verify collection information
-- Calculate monthly payments
-- Manage deductions
-- Generate receipts
-- Generate reports
-- Manage farmer records
-- Monitor business activities
-- Enter backup records manually
-
----
-
-# Expected Improvements with TeaRoutePay
-
-The desktop application aims to improve office operations through:
-
-- Reduced manual calculations
-- Improved accounting accuracy
-- Faster report generation
-- Reduced duplicate data entry
-- Better synchronization support
-- Improved reporting functionality
-- Improved payment management
-
----
 
 # Conclusion
 
