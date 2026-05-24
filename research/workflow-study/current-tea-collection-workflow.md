@@ -35,20 +35,20 @@ This workflow analysis was prepared to understand the existing operational proce
 At the beginning of the day, the tea collector receives the assigned route details and prepares the lorry route book used for recording daily tea collection activities.
 
 ### Step 2 – Farmer Tea Leaf Handover
-Farmers provide tea leaves to the tea collector during route visits. Some farmers also maintain their own handwritten collection books for reference.
+Farmers provide tea leaves to the tea collector during route visits. Each farmer maintains an their own handwritten collection book issued by the office, and the collector updates this book during collection activities.
 
 ### Step 3 – Tea Weight Measurement
 The tea collector manually measures the tea leaf weight using a weighing scale.
 
 ### Step 4 – Manual Record Entry
-The collector manually records collection information in the route book, including:
+The collector manually records collection information in the route book and updates the farmer’s hardwritten collection record book, including:
 - Farmer name or identification
 - Tea leaf weight
 - Date and collection details
 - Fertilizer or deduction notes if required
 
 ### Step 5 – Route Completion
-The collector continues the collection process for all farmers assigned to the route.
+The collector travels through the assigned route and collects tea leaves from each farmer location during the daily collection period.
 
 ### Step 6 – End-of-Day Office Submission
 After completing the route, the tea collector returns to the office and submits the route book containing the daily collection records.
@@ -79,29 +79,26 @@ The current workflow uses several manual and semi-digital records:
 
 ---
 
-## Duplicate Data Entry Areas
+## Record Handling Process
 
-The current process contains duplicate data entry in several stages:
+The current process uses both route books and official farmer collection books as operational and backup records.
 
-1. Tea collection details are first written manually in route books.
-2. Office staff re-enter the same data into the desktop accounting system.
-3. Some farmers maintain separate handwritten records for verification purposes.
-4. Payment details may also be manually prepared again for bank processing.
+1. Tea collection details are recorded in the collector’s route book.
+2. The same collection details are updated in the farmer’s official collection book.
+3. Office staff enter collection records into the desktop accounting system for payment processing and reporting.
+4. Physical books are maintained for verification and backup purposes.
 
 ---
 
 ## Manual Pain Points
 
-The current manual process has several limitations and operational challenges:
-
-1. Duplicate end-of-day data entry increases workload and consumes time.
+1. End-of-day office data entry increases workload and processing time.
 2. Handwritten records may become unclear, damaged, or lost.
 3. Human errors can occur during manual calculations and data entry.
 4. The current desktop system does not support mobile field collection.
-5. The existing user interface is outdated and difficult for users.
-6. There is no QR-based farmer identification system.
-7. The process does not support digital field data capture.
-8. Manual processes make reporting and tracking slower.
+5. Farmer identification is fully manual.
+6. Reporting and record tracking are time-consuming.
+7. The system does not support digital field data capture or real-time synchronization.
 
 ---
 
