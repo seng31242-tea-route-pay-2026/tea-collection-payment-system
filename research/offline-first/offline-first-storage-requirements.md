@@ -1,169 +1,206 @@
 # Offline-First Data Storage Requirements
 
-## Project: TeaRoutePay
-
----
-
 # 1. Purpose
 
-This document defines the offline-first data storage architecture for the TeaRoutePay system.
+This document defines the offline-first data storage requirements for the TeaRoutePay mobile system.
 
-The system operates in field conditions where internet connectivity is unreliable.  
-Therefore, the mobile application must function fully offline and later synchronize data with office and cloud systems.
+Tea collection activities happen in rural areas where internet connectivity may be weak, unstable, or unavailable.  
+The mobile application must therefore continue functioning without internet access and synchronize data later when connectivity becomes available.
 
-The mobile app acts as a **bridge system** between farmers, office operations, and cloud storage.
+The goal of this design is to ensure:
+
+- Continuous tea collection operations
+- Reliable local data storage
+- Safe synchronization to office and cloud systems
+- Prevention of data loss during offline usage
 
 ---
 
 # 2. System Overview
 
-The system consists of three layers:
+The TeaRoutePay system uses a multi-layer storage architecture.
 
-- Mobile Application (Field Layer)
-- Office Desktop System (Processing Layer)
-- Cloud Database (Central Layer)
+The system contains three major layers:
 
-### Databases used:
+| Layer | Responsibility |
+|---|---|
+| Mobile Application | Offline field data collection |
+| Office Desktop System | Operational processing and validation |
+| Cloud System | Centralized long-term storage |
 
-- Mobile: SQLite (local offline DB)
-- Office: PostgreSQL (local office DB)
-- Cloud: PostgreSQL (central DB)
+### Databases Used
 
----
-
-# 3. Mobile Application Role (Critical Behavior)
-
-The mobile system is the **primary field data collector**.
-
-It must support:
-
-- QR-based farmer identification
-- Route-based farmer data storage
-- Tea collection entry
-- Advance payment recording (NOT full salary processing)
-- New farmer account creation in the field
-- Offline operation without internet dependency
-- Temporary sync queue storage
-
-### Important constraints:
-
-- No receipt generation in mobile app
-- No salary calculation in mobile app
-- Only data collection and temporary records
-- Sync happens later when network is available
+| System | Database |
+|---|---|
+| Mobile App | SQLite |
+| Office System | PostgreSQL |
+| Cloud System | PostgreSQL |
 
 ---
 
-# 4. Data Stored Offline (Mobile SQLite)
+# 3. Offline-First Requirements
+
+The mobile application must operate fully offline during field collection activities.
+
+### Required Offline Capabilities
+
+- Farmer identification using QR codes
+- Route-based farmer lookup
+- Tea collection recording
+- Advance payment recording
+- New farmer registration
+- Local transaction storage
+- Temporary sync queue management
+
+### Important Constraints
+
+- Salary processing is NOT handled in the mobile application
+- Receipt generation is NOT handled in the mobile application
+- Mobile app acts only as a field data collection system
+- Internet connection must not be required for core operations
+
+---
+
+# 4. Data Stored Locally (SQLite)
+
+The following data must be available offline inside the mobile application.
 
 | Data Type | Purpose |
-|-----------|--------|
-| Farmer data (route-based) | Identify farmers during collection |
-| QR mapping | Fast farmer lookup |
+|---|---|
+| Farmer information | Identify registered farmers |
+| QR code mapping | Fast farmer lookup |
+| Route information | Identify collection routes |
 | Tea collection records | Store collected tea weight |
-| Advance payments | Temporary field payments |
-| Route data | Define collection path |
-| Sync queue | Store unsent records |
+| Advance payment records | Store temporary payments |
+| Newly registered farmers | Temporary local registration |
+| Sync queue | Track unsynchronized records |
 | Device logs | Debugging and traceability |
 
 ---
 
-# 5. Sync Behavior
+# 5. Offline Storage Flow
 
-Data is always written first to **local SQLite database**.
-
-Synchronization happens in two ways:
-
-- If office network is available → sync to Office DB
-- If internet is available → sync directly to Cloud DB
-- Office DB later syncs to Cloud DB
-
-Mobile app never depends on real-time internet.
+1. Tea collector opens the mobile application
+2. Farmer QR code is scanned
+3. Data is retrieved from local SQLite database
+4. Tea collection data is entered
+5. Records are saved locally
+6. Records are added to sync queue
+7. Synchronization occurs later when connectivity becomes available
 
 ---
 
-# 6. Key System Rule
+# 6. Storage Architecture
 
-The mobile application is a:
+The mobile application acts as the primary field data collector.
 
-> **Offline-first bridge system for field data collection**
+### Storage Flow
 
-It ensures:
+- Data is first written to local SQLite storage
+- Data remains locally available until synchronization succeeds
+- Data may sync to:
+  - Office PostgreSQL database
+  - Cloud PostgreSQL database
+- Office system may later synchronize with cloud storage
 
-- Continuous tea collection without interruptions
-- Temporary local storage of all operations
-- Deferred synchronization to central systems
-
----
-
-## 7. System Flow Diagram
-
-```mermaid
-flowchart TD
-
-A[Farmer QR Scan Mobile App] --> B[Local SQLite DB]
-
-B --> C[Tea Collection Entry]
-B --> D[Advance Payment Entry]
-B --> E[New Farmer Creation]
-B --> F[Sync Queue]
-
-F --> G{Connection Available?}
-
-G -->|Office Network| H[Office PostgreSQL DB]
-G -->|Internet| I[Cloud PostgreSQL DB]
-
-H <--> I
-```
+The system must continue functioning even if synchronization fails temporarily.
 
 ---
 
-# 8. Sync Risks
+# 7. Offline-to-Online Sync Risks
 
 | Risk | Description |
-|------|------------|
-| Duplicate records | Same data sent multiple times |
-| Missing sync | Device loss before upload |
-| Data mismatch | Office vs mobile inconsistency |
-| Network interruption | Partial sync failure |
-| Time mismatch | Different timestamps between systems |
+|---|---|
+| Duplicate records | Same transaction synced multiple times |
+| Missing sync | Records not uploaded before device failure |
+| Partial sync failure | Sync interrupted during upload |
+| Data inconsistency | Office and mobile data mismatch |
+| Timestamp mismatch | Different device times causing ordering issues |
+| Device damage | Local data loss before synchronization |
+| Network instability | Incomplete synchronization attempts |
+
+---
+
+# 8. Data Conflict Scenarios
+
+The following conflict situations may occur during synchronization.
+
+| Scenario | Example |
+|---|---|
+| Duplicate submission | Same collection uploaded twice |
+| Farmer update conflict | Farmer edited in office and mobile separately |
+| Deleted record conflict | Record removed in one system but not another |
+| Timestamp conflict | Older data overwriting newer data |
+| Partial transaction sync | Some records synced while others fail |
 
 ---
 
 # 9. Conflict Handling Strategy
 
-- Use unique IDs for every transaction
-- Use timestamps for ordering
-- Maintain sync status (pending / synced / failed)
-- Detect duplicates at Office/Cloud level
-- Keep audit logs for all sync events
+To reduce synchronization conflicts, the system should implement:
+
+- Unique transaction IDs
+- Device-generated UUIDs
+- Sync status tracking
+- Timestamp-based ordering
+- Duplicate detection rules
+- Audit logging
+- Retry mechanisms for failed syncs
+
+### Suggested Sync Status Values
+
+- Pending
+- Synced
+- Failed
+- Retrying
 
 ---
 
 # 10. Backup Strategy
 
-- Mobile SQLite: temporary offline safety
-- Office DB: operational backup
-- Cloud DB: permanent storage
-- Sync logs: debugging and recovery support
+The system should support multiple backup layers.
+
+| Layer | Backup Purpose |
+|---|---|
+| Mobile SQLite | Temporary offline protection |
+| Office PostgreSQL | Operational backup |
+| Cloud PostgreSQL | Permanent centralized backup |
+| Sync logs | Recovery and debugging |
+
+### Additional Recommendations
+
+- Automatic sync retries
+- Daily office database backups
+- Cloud backup replication
+- Device-level encrypted storage
 
 ---
 
-# 11. Conclusion
+# 11. Recommended Offline-First Design Pattern
 
-The TeaRoutePay system follows an **offline-first, multi-layer storage architecture** designed to ensure reliable data persistence and synchronization across distributed environments.
+The recommended architecture pattern is:
 
-The storage design is based on three levels:
+> Local-First Storage with Deferred Synchronization
 
-- Local mobile storage (SQLite) for offline data capture
-- Office storage (PostgreSQL) for processing and validation
-- Cloud storage (PostgreSQL) for centralized persistence and backup
+### Why this approach is suitable
 
-This architecture ensures:
+- Works in low-connectivity environments
+- Reduces operational interruptions
+- Prevents field data loss
+- Improves reliability for tea collection routes
 
-- Continuous data capture without network dependency
-- Safe temporary storage during offline operations
-- Reliable synchronization between local, office, and cloud databases
-- Data consistency across all storage layers
+---
 
-Overall, the system prioritizes **data durability, consistency, and sync reliability** in low-connectivity field environments.
+# 12. Conclusion
+
+TeaRoutePay follows an offline-first architecture designed for field operations with unreliable internet connectivity.
+
+The system prioritizes:
+
+- Reliable offline operation
+- Safe temporary local storage
+- Controlled synchronization
+- Conflict prevention
+- Data durability
+
+This architecture ensures that tea collection activities can continue without interruption while maintaining accurate synchronization with office and cloud systems.
