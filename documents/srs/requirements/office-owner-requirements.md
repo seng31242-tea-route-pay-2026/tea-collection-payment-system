@@ -29,8 +29,6 @@ Office staff currently perform the following activities:
 
 # Current Workflow Challenges
 
-The current manual and semi-digital workflow creates several operational challenges.
-
 ## 1. Duplicate Data Entry
 Collection data is first written manually and later re-entered into the desktop system.
 
