@@ -11,4 +11,4 @@
 *.temp
 
 # Logs
-*.log
+*.log.idea/
