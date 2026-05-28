@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 820" role="img">
+<style>
+  svg text {
+    font-family: var(--font-sans, sans-serif);
+  }
+</style>
+
+    <title>Activity Diagram 3 — Monthly payment calculation and processing</title>
+    <desc>Shows how the owner triggers payment calculation, the system applies deductions, owner approval, and bank
+      transfer with SMS notification.</desc>
+    <defs>
+      <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+        orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </marker>
+    </defs>
+
+    <rect x="10" y="30" width="200" height="770" rx="8" fill="#534AB7" fill-opacity=".05" stroke="#534AB7"
+      stroke-opacity=".2" stroke-width="0.5" />
+    <rect x="220" y="30" width="220" height="770" rx="8" fill="#185FA5" fill-opacity=".06" stroke="#185FA5"
+      stroke-opacity=".2" stroke-width="0.5" />
+    <rect x="450" y="30" width="220" height="770" rx="8" fill="#3B6D11" fill-opacity=".05" stroke="#3B6D11"
+      stroke-opacity=".2" stroke-width="0.5" />
+
+    <text x="110" y="50" text-anchor="middle" font-size="12" font-weight="500" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">Owner / Office Staff</text>
+    <text x="330" y="50" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Office System</text>
+    <text x="560" y="50" text-anchor="middle" font-size="12" font-weight="500" fill="#27500A"
+      font-family="var(--font-sans,sans-serif)">External Services</text>
+
+    <circle cx="110" cy="90" r="12" fill="#444441" />
+    <line x1="110" y1="102" x2="110" y2="128" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Select month -->
+    <rect x="30" y="130" width="160" height="44" rx="8" fill="#534AB7" fill-opacity=".12" stroke="#534AB7"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="110" y="148" text-anchor="middle" font-size="13" font-weight="500" fill="#26215C"
+      font-family="var(--font-sans,sans-serif)">Select month</text>
+    <text x="110" y="163" text-anchor="middle" font-size="11" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">Request payment run</text>
+    <line x1="110" y1="174" x2="110" y2="198" stroke="#888780" stroke-width="1.2" />
+    <line x1="110" y1="198" x2="240" y2="198" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Fetch collections -->
+    <rect x="240" y="176" width="180" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="194" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Fetch all collections</text>
+    <text x="330" y="209" text-anchor="middle" font-size="10" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">For selected month</text>
+    <line x1="330" y1="220" x2="330" y2="254" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Apply rate -->
+    <rect x="240" y="254" width="180" height="56" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="270" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Apply tea rate</text>
+    <text x="330" y="300" text-anchor="middle" font-size="10" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">Payment = Weight * Rate</text>
+    <line x1="330" y1="310" x2="330" y2="332" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Apply deductions -->
+    <rect x="240" y="332" width="180" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="350" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Apply deductions</text>
+    <text x="330" y="365" text-anchor="middle" font-size="10" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">Loan, fertilizer, other</text>
+    <line x1="330" y1="376" x2="330" y2="408" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Net negative? -->
+    <polygon points="330,408 416,438 330,468 244,438" fill="#EF9F27" fill-opacity=".2" stroke="#BA7517"
+      stroke-width="0.8" />
+    <text x="330" y="435" text-anchor="middle" font-size="12" font-weight="500" fill="#633806"
+      font-family="var(--font-sans,sans-serif)">Net ≥ 0?</text>
+    <text x="330" y="450" text-anchor="middle" font-size="10" fill="#854F0B"
+      font-family="var(--font-sans,sans-serif)">Deductions check</text>
+
+    <!-- No branch -->
+    <line x1="244" y1="438" x2="140" y2="438" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+    <text x="196" y="432" text-anchor="middle" font-size="10" fill="#888780"
+      font-family="var(--font-sans,sans-serif)">No</text>
+    <rect x="30" y="418" width="110" height="40" rx="6" fill="#E24B4A" fill-opacity=".1" stroke="#A32D2D"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="85" y="434" text-anchor="middle" font-size="11" font-weight="500" fill="#791F1F"
+      font-family="var(--font-sans,sans-serif)">Cap at zero</text>
+    <text x="85" y="448" text-anchor="middle" font-size="10" fill="#A32D2D"
+      font-family="var(--font-sans,sans-serif)">Carry over excess</text>
+    <line x1="85" y1="458" x2="85" y2="480" stroke="#888780" stroke-width="1.2" />
+    <line x1="85" y1="480" x2="330" y2="480" stroke="#888780" stroke-width="1.2" />
+
+    <!-- Yes branch -->
+    <text x="346" y="488" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)">Yes</text>
+    <line x1="330" y1="468" x2="330" y2="486" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Generate summary -->
+    <rect x="240" y="486" width="180" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="504" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Generate summary</text>
+    <text x="330" y="519" text-anchor="middle" font-size="10" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">Per-farmer breakdown</text>
+    <line x1="330" y1="530" x2="330" y2="554" stroke="#888780" stroke-width="1.2" />
+    <line x1="330" y1="554" x2="190" y2="554" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Owner reviews -->
+    <rect x="30" y="532" width="160" height="44" rx="8" fill="#534AB7" fill-opacity=".12" stroke="#534AB7"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="110" y="550" text-anchor="middle" font-size="12" font-weight="500" fill="#26215C"
+      font-family="var(--font-sans,sans-serif)">Review summary</text>
+    <text x="110" y="565" text-anchor="middle" font-size="10" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">Check each farmer</text>
+    <line x1="110" y1="576" x2="110" y2="608" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Approve? -->
+    <polygon points="110,608 196,638 110,668 24,638" fill="#EF9F27" fill-opacity=".2" stroke="#BA7517"
+      stroke-width="0.8" />
+    <text x="110" y="635" text-anchor="middle" font-size="12" font-weight="500" fill="#633806"
+      font-family="var(--font-sans,sans-serif)">Approved?</text>
+    <text x="110" y="650" text-anchor="middle" font-size="10" fill="#854F0B"
+      font-family="var(--font-sans,sans-serif)">Owner decision</text>
+
+    <!-- No — adjust -->
+    <line x1="24" y1="638" x2="16" y2="638" stroke="#888780" stroke-width="1.2" />
+    <text x="28" y="630" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)">No</text>
+    <line x1="16" y1="638" x2="16" y2="354" stroke="#888780" stroke-width="1.2" />
+    <line x1="16" y1="354" x2="240" y2="354" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+    <text x="22" y="485" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)"
+      transform="rotate(-90, 22, 485)">adjust</text>
+
+    <!-- Yes -->
+    <text x="140" y="676" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)">Yes</text>
+    <line x1="110" y1="668" x2="110" y2="694" stroke="#888780" stroke-width="1.2" />
+    <line x1="110" y1="694" x2="240" y2="694" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Submit payment -->
+    <rect x="240" y="672" width="180" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="690" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Submit payment req.</text>
+    <text x="330" y="705" text-anchor="middle" font-size="10" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">To backend</text>
+    <line x1="420" y1="694" x2="470" y2="694" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- Bank transfer -->
+    <rect x="470" y="672" width="180" height="44" rx="8" fill="#3B6D11" fill-opacity=".12" stroke="#3B6D11"
+      stroke-opacity=".4" stroke-width="0.5" />
+    <text x="560" y="690" text-anchor="middle" font-size="12" font-weight="500" fill="#173404"
+      font-family="var(--font-sans,sans-serif)">Process bank transfer</text>
+    <text x="560" y="705" text-anchor="middle" font-size="10" fill="#27500A"
+      font-family="var(--font-sans,sans-serif)">Bank API call</text>
+    <line x1="560" y1="716" x2="560" y2="738" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+
+    <!-- SMS -->
+    <rect x="470" y="738" width="180" height="44" rx="8" fill="#3B6D11" fill-opacity=".12" stroke="#3B6D11"
+      stroke-opacity=".4" stroke-width="0.5" />
+    <text x="560" y="756" text-anchor="middle" font-size="12" font-weight="500" fill="#173404"
+      font-family="var(--font-sans,sans-serif)">Send SMS to farmer</text>
+    <text x="560" y="771" text-anchor="middle" font-size="10" fill="#27500A"
+      font-family="var(--font-sans,sans-serif)">Payment notification</text>
+
+    <!-- END -->
+    <line x1="470" y1="760" x2="122" y2="760" stroke="#888780" stroke-width="1.2" marker-end="url(#arr2)" />
+    <circle cx="110" cy="760" r="8" fill="#444441" />
+    <circle cx="110" cy="760" r="12" fill="none" stroke="#444441" stroke-width="2" />
+  </svg>
