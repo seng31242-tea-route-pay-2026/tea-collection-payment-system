@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 720" role="img">
+<style>
+  svg text {
+    font-family: var(--font-sans, sans-serif);
+  }
+</style>
+
+    <title>Activity Diagram 4 — Deduction management (loans and fertilizer)</title>
+    <desc>Shows how office staff reviews auto-generated deductions from the mobile app and manually adds, edits, or
+      removes deductions for a farmer.
+    </desc>
+    <defs>
+      <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+        orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </marker>
+    </defs>
+
+    <!-- Swimlane backgrounds -->
+    <rect x="10" y="30" width="200" height="672" rx="8" fill="#534AB7" fill-opacity=".05" stroke="#534AB7"
+      stroke-opacity=".2" stroke-width="0.5" />
+    <rect x="220" y="30" width="220" height="672" rx="8" fill="#185FA5" fill-opacity=".06" stroke="#185FA5"
+      stroke-opacity=".2" stroke-width="0.5" />
+    <rect x="450" y="30" width="220" height="672" rx="8" fill="#3B6D11" fill-opacity=".05" stroke="#3B6D11"
+      stroke-opacity=".2" stroke-width="0.5" />
+
+    <!-- Swimlane headers -->
+    <text x="110" y="50" text-anchor="middle" font-size="12" font-weight="500" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">Owner / Office Staff</text>
+    <text x="330" y="50" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Office System</text>
+    <text x="560" y="50" text-anchor="middle" font-size="12" font-weight="500" fill="#27500A"
+      font-family="var(--font-sans,sans-serif)">Database</text>
+
+    <!-- START nodes -->
+    <circle cx="110" cy="90" r="12" fill="#444441" />
+    <line x1="110" y1="102" x2="110" y2="128" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Search farmer -->
+    <rect x="30" y="130" width="160" height="44" rx="8" fill="#534AB7" fill-opacity=".12" stroke="#534AB7"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="110" y="148" text-anchor="middle" font-size="13" font-weight="500" fill="#26215C"
+      font-family="var(--font-sans,sans-serif)">Search farmer</text>
+    <text x="110" y="163" text-anchor="middle" font-size="11" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">By name or ID</text>
+    <line x1="110" y1="174" x2="110" y2="198" stroke="#888780" stroke-width="1.2" />
+    <line x1="110" y1="198" x2="235" y2="198" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Database Data Source -->
+    <rect x="470" y="130" width="180" height="44" rx="8" fill="#3B6D11" fill-opacity=".12" stroke="#3B6D11"
+      stroke-opacity=".4" stroke-width="0.5" />
+    <text x="560" y="148" text-anchor="middle" font-size="13" font-weight="500" fill="#173404"
+      font-family="var(--font-sans,sans-serif)">Retrieve field data</text>
+    <text x="560" y="163" text-anchor="middle" font-size="11" fill="#27500A"
+      font-family="var(--font-sans,sans-serif)">Raw app deductions</text>
+    <line x1="560" y1="174" x2="560" y2="198" stroke="#888780" stroke-width="1.2" />
+    <line x1="560" y1="198" x2="425" y2="198" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Auto-generate deductions -->
+    <rect x="235" y="176" width="190" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="194" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Auto-generate list</text>
+    <text x="330" y="209" text-anchor="middle" font-size="11" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">Get data from DB</text>
+    <line x1="330" y1="220" x2="330" y2="244" stroke="#888780" stroke-width="1.2" />
+    <line x1="330" y1="244" x2="190" y2="244" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Action decision -->
+    <rect x="30" y="222" width="160" height="44" rx="8" fill="#534AB7" fill-opacity=".12" stroke="#534AB7"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="110" y="240" text-anchor="middle" font-size="13" font-weight="500" fill="#26215C"
+      font-family="var(--font-sans,sans-serif)">Review deductions</text>
+    <text x="110" y="255" text-anchor="middle" font-size="11" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">Choose action</text>
+    <line x1="110" y1="266" x2="110" y2="298" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Action fork -->
+    <polygon points="110,298 206,328 110,358 14,328" fill="#EF9F27" fill-opacity=".2" stroke="#BA7517"
+      stroke-width="0.8" />
+    <text x="110" y="325" text-anchor="middle" font-size="12" font-weight="500" fill="#633806"
+      font-family="var(--font-sans,sans-serif)">Action?</text>
+    <text x="110" y="340" text-anchor="middle" font-size="10" fill="#854F0B"
+      font-family="var(--font-sans,sans-serif)">Add / Edit / Confirm</text>
+
+    <!-- ADD branch -->
+    <line x1="14" y1="328" x2="18" y2="328" stroke="#888780" stroke-width="1.2" />
+    <text x="25" y="322" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)">Add</text>
+    <line x1="18" y1="328" x2="18" y2="414" stroke="#888780" stroke-width="1.2" />
+    <line x1="18" y1="414" x2="330" y2="414" stroke="#888780" stroke-width="1.2" />
+
+    <!-- CONFIRM branch -->
+    <line x1="206" y1="328" x2="210" y2="328" stroke="#888780" stroke-width="1.2" />
+    <text x="215" y="322" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)">Confirm</text>
+    <line x1="210" y1="328" x2="210" y2="615" stroke="#888780" stroke-width="1.2" />
+    <line x1="210" y1="615" x2="110" y2="615" stroke="#888780" stroke-width="1.2" />
+    <line x1="110" y1="615" x2="110" y2="638" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- EDIT branch -->
+    <text x="150" y="360" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)">Edit</text>
+    <line x1="110" y1="358" x2="110" y2="384" stroke="#888780" stroke-width="1.2" />
+    <line x1="110" y1="384" x2="235" y2="384" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Enter details -->
+    <rect x="235" y="362" width="190" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="380" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Enter / edit details</text>
+    <text x="330" y="395" text-anchor="middle" font-size="11" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">Type, amount, date</text>
+
+    <!-- Merge at line y=406 -->
+    <line x1="330" y1="406" x2="330" y2="432" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Join point approx y=414 shown as node -->
+    <circle cx="330" cy="414" r="4" fill="#888780" />
+
+    <!-- Validate -->
+    <rect x="235" y="432" width="190" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="450" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Validate input</text>
+    <text x="330" y="465" text-anchor="middle" font-size="11" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">Amount &gt; 0, type set</text>
+    <line x1="330" y1="476" x2="330" y2="508" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Valid? -->
+    <polygon points="330,508 421,538 330,568 239,538" fill="#EF9F27" fill-opacity=".2" stroke="#BA7517"
+      stroke-width="0.8" />
+    <text x="330" y="535" text-anchor="middle" font-size="12" font-weight="500" fill="#633806"
+      font-family="var(--font-sans,sans-serif)">Valid?</text>
+
+    <!-- No -->
+    <line x1="421" y1="538" x2="435" y2="538" stroke="#888780" stroke-width="1.2" />
+    <text x="430" y="532" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)">No</text>
+    <line x1="435" y1="538" x2="435" y2="454" stroke="#888780" stroke-width="1.2" stroke-dasharray="4 3" />
+    <line x1="435" y1="454" x2="425" y2="454" stroke="#888780" stroke-width="1.2" stroke-dasharray="4 3"
+      marker-end="url(#arr3)" />
+
+    <!-- Yes -->
+    <text x="350" y="576" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)">Yes</text>
+    <line x1="330" y1="568" x2="330" y2="580" stroke="#888780" stroke-width="1.2" />
+    <line x1="330" y1="580" x2="560" y2="580" stroke="#888780" stroke-width="1.2" />
+    <line x1="560" y1="580" x2="560" y2="592" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Save deduction -->
+    <rect x="470" y="592" width="180" height="44" rx="8" fill="#3B6D11" fill-opacity=".12" stroke="#3B6D11"
+      stroke-opacity=".4" stroke-width="0.5" />
+    <text x="560" y="610" text-anchor="middle" font-size="13" font-weight="500" fill="#173404"
+      font-family="var(--font-sans,sans-serif)">Save deduction</text>
+    <text x="560" y="625" text-anchor="middle" font-size="11" fill="#27500A"
+      font-family="var(--font-sans,sans-serif)">Update DB record</text>
+    <line x1="560" y1="636" x2="560" y2="660" stroke="#888780" stroke-width="1.2" />
+    <line x1="560" y1="660" x2="190" y2="660" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <!-- Confirm to staff -->
+    <rect x="30" y="638" width="160" height="44" rx="8" fill="#534AB7" fill-opacity=".12" stroke="#534AB7"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="110" y="656" text-anchor="middle" font-size="13" font-weight="500" fill="#26215C"
+      font-family="var(--font-sans,sans-serif)">View confirmation</text>
+    <text x="110" y="671" text-anchor="middle" font-size="11" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">Updated list shown</text>
+    <line x1="110" y1="682" x2="110" y2="700" stroke="#888780" stroke-width="1.2" marker-end="url(#arr3)" />
+
+    <circle cx="110" cy="708" r="8" fill="#444441" />
+    <circle cx="110" cy="708" r="12" fill="none" stroke="#444441" stroke-width="2" />
+  </svg>

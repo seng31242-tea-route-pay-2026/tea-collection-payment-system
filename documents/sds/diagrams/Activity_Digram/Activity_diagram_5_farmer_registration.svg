@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 740" role="img">
+<style>
+  svg text {
+    font-family: var(--font-sans, sans-serif);
+  }
+</style>
+
+    <title>Activity Diagram 5 — Farmer registration and profile management</title>
+    <desc>Shows how a farmer or staff registers, assigns a route, scans a pre-printed QR code, and saves the profile.
+    </desc>
+    <defs>
+      <marker id="arr4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+        orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </marker>
+    </defs>
+
+    <rect x="10" y="30" width="200" height="692" rx="8" fill="#534AB7" fill-opacity=".05" stroke="#534AB7"
+      stroke-opacity=".2" stroke-width="0.5" />
+    <rect x="220" y="30" width="220" height="692" rx="8" fill="#185FA5" fill-opacity=".06" stroke="#185FA5"
+      stroke-opacity=".2" stroke-width="0.5" />
+    <rect x="450" y="30" width="220" height="692" rx="8" fill="#3B6D11" fill-opacity=".05" stroke="#3B6D11"
+      stroke-opacity=".2" stroke-width="0.5" />
+
+    <text x="110" y="50" text-anchor="middle" font-size="12" font-weight="500" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">Collector / Office Staff</text>
+    <text x="330" y="50" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Mobile App / Office System</text>
+    <text x="560" y="50" text-anchor="middle" font-size="12" font-weight="500" fill="#27500A"
+      font-family="var(--font-sans,sans-serif)">Database</text>
+
+    <circle cx="110" cy="90" r="12" fill="#444441" />
+    <line x1="110" y1="102" x2="110" y2="128" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <rect x="30" y="130" width="160" height="44" rx="8" fill="#534AB7" fill-opacity=".12" stroke="#534AB7"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="110" y="148" text-anchor="middle" font-size="13" font-weight="500" fill="#26215C"
+      font-family="var(--font-sans,sans-serif)">Open registration</text>
+    <text x="110" y="163" text-anchor="middle" font-size="11" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">App or Office Portal</text>
+    <line x1="110" y1="174" x2="110" y2="198" stroke="#888780" stroke-width="1.2" />
+    <line x1="110" y1="198" x2="240" y2="198" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <rect x="240" y="176" width="180" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="194" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Show blank form</text>
+    <text x="330" y="209" text-anchor="middle" font-size="11" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">Name, NIC, contact</text>
+    <line x1="330" y1="220" x2="330" y2="244" stroke="#888780" stroke-width="1.2" />
+    <line x1="330" y1="244" x2="190" y2="244" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <rect x="30" y="222" width="160" height="44" rx="8" fill="#534AB7" fill-opacity=".12" stroke="#534AB7"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="110" y="240" text-anchor="middle" font-size="13" font-weight="500" fill="#26215C"
+      font-family="var(--font-sans,sans-serif)">Fill in details</text>
+    <text x="110" y="255" text-anchor="middle" font-size="11" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">Name, bank, etc.</text>
+    <line x1="110" y1="266" x2="110" y2="290" stroke="#888780" stroke-width="1.2" />
+    <line x1="110" y1="290" x2="240" y2="290" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <rect x="240" y="268" width="180" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="286" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Validate Data</text>
+    <text x="330" y="301" text-anchor="middle" font-size="11" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">Check NIC duplicates</text>
+    <line x1="330" y1="312" x2="330" y2="344" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <polygon points="330,344 422,374 330,404 238,374" fill="#EF9F27" fill-opacity=".2" stroke="#BA7517"
+      stroke-width="0.8" />
+    <text x="330" y="371" text-anchor="middle" font-size="12" font-weight="500" fill="#633806"
+      font-family="var(--font-sans,sans-serif)">Duplicate?</text>
+    <text x="330" y="386" text-anchor="middle" font-size="10" fill="#854F0B"
+      font-family="var(--font-sans,sans-serif)">Or data error</text>
+
+    <line x1="386" y1="374" x2="470" y2="374" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+    <text x="421" y="368" text-anchor="middle" font-size="10" fill="#888780"
+      font-family="var(--font-sans,sans-serif)">Yes</text>
+
+    <rect x="470" y="354" width="170" height="44" rx="8" fill="#E24B4A" fill-opacity=".1" stroke="#A32D2D"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="555" y="372" text-anchor="middle" font-size="12" font-weight="500" fill="#791F1F"
+      font-family="var(--font-sans,sans-serif)">Show Error &amp; Allow Edit</text>
+    <text x="555" y="387" text-anchor="middle" font-size="10" fill="#A32D2D"
+      font-family="var(--font-sans,sans-serif)">User corrects (or staff fixes)</text>
+
+    <line x1="555" y1="354" x2="555" y2="244" stroke="#888780" stroke-width="1.2" stroke-dasharray="4 3" />
+    <line x1="555" y1="244" x2="190" y2="244" stroke="#888780" stroke-width="1.2" stroke-dasharray="4 3"
+      marker-end="url(#arr4)" />
+
+    <text x="260" y="418" font-size="10" fill="#888780" font-family="var(--font-sans,sans-serif)">No</text>
+    <line x1="330" y1="404" x2="330" y2="434" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <rect x="240" y="434" width="180" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="452" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Assign route</text>
+    <text x="330" y="467" text-anchor="middle" font-size="11" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">From collection list</text>
+    <line x1="330" y1="478" x2="330" y2="512" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <rect x="240" y="512" width="180" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="530" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Scan Pre-printed QR</text>
+    <text x="330" y="545" text-anchor="middle" font-size="11" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">Read code via App/Scanner</text>
+    <line x1="330" y1="556" x2="330" y2="580" stroke="#888780" stroke-width="1.2" />
+    <line x1="330" y1="580" x2="470" y2="580" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <rect x="470" y="558" width="180" height="44" rx="8" fill="#3B6D11" fill-opacity=".12" stroke="#3B6D11"
+      stroke-opacity=".4" stroke-width="0.5" />
+    <text x="560" y="576" text-anchor="middle" font-size="13" font-weight="500" fill="#173404"
+      font-family="var(--font-sans,sans-serif)">Save to database</text>
+    <text x="560" y="591" text-anchor="middle" font-size="11" fill="#27500A"
+      font-family="var(--font-sans,sans-serif)">Profile &amp; QR Linked</text>
+    <line x1="560" y1="602" x2="560" y2="626" stroke="#888780" stroke-width="1.2" />
+    <line x1="560" y1="626" x2="420" y2="626" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <rect x="240" y="604" width="180" height="44" rx="8" fill="#185FA5" fill-opacity=".12" stroke="#185FA5"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="330" y="622" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C"
+      font-family="var(--font-sans,sans-serif)">Confirm Registration</text>
+    <text x="330" y="637" text-anchor="middle" font-size="11" fill="#185FA5"
+      font-family="var(--font-sans,sans-serif)">QR successfully assigned</text>
+    <line x1="330" y1="648" x2="330" y2="672" stroke="#888780" stroke-width="1.2" />
+    <line x1="330" y1="672" x2="190" y2="672" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <rect x="30" y="650" width="160" height="44" rx="8" fill="#534AB7" fill-opacity=".12" stroke="#534AB7"
+      stroke-opacity=".5" stroke-width="0.5" />
+    <text x="110" y="668" text-anchor="middle" font-size="13" font-weight="500" fill="#26215C"
+      font-family="var(--font-sans,sans-serif)">Hand QR and Book</text>
+    <text x="110" y="683" text-anchor="middle" font-size="11" fill="#3C3489"
+      font-family="var(--font-sans,sans-serif)">Give them the physical card</text>
+    <line x1="110" y1="694" x2="110" y2="714" stroke="#888780" stroke-width="1.2" />
+    <line x1="110" y1="714" x2="110" y2="714" stroke="#888780" stroke-width="1.2" marker-end="url(#arr4)" />
+
+    <circle cx="110" cy="722" r="8" fill="#444441" />
+    <circle cx="110" cy="722" r="12" fill="none" stroke="#444441" stroke-width="2" />
+  </svg>
