@@ -4,8 +4,13 @@ This directory contains research materials used to analyse the current tea colle
 
 ## Contents Structure
 
-- `literature-review/` - Research papers, notes, and summaries
-- `competitive-analysis/` - Similar systems and competitor analysis
-- `client-interviews/` - Client interview notes and transcripts
-- `workflow-study/` - Current workflow observations
-- `references/` - External references and supporting material
+- `workflow-study/` — Current workflow observations and existing system analysis
+
+## Workflow Study
+
+Located in `workflow-study/`. Contains:
+
+| File | Description |
+|---|---|
+| `current-tea-collection-workflow.md` | Step-by-step analysis of the existing manual collection workflow, stakeholders, pain points, and improvement opportunities |
+| `desktop-system-analysis.md` | Analysis of the existing desktop accounting system — features, limitations, and what should be preserved or improved in TeaRoutePay |
